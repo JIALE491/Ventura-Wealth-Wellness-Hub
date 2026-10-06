@@ -11,6 +11,8 @@ Instead of acting as just another portfolio tracker, the platform helps users un
 
 > Demo / educational prototype only — not financial advice.
 
+![Ventura dashboard](docs/screenshots/01-dashboard-overview.png)
+
 ---
 
 ## Project Description 
@@ -159,6 +161,45 @@ The dashboard is designed to make financial health easier to understand through:
 - Scenario comparison views
 - Interactive price charts for individual holdings (powered by TradingView), plus a live market news feed
 - Simple portfolio management actions, including CSV and PDF export
+
+---
+
+## Demo Screenshots
+
+### Financial Wellness Scores
+![Financial Wellness Scores](docs/screenshots/02-wellness-scores.png)
+
+### Scenario Stress Test
+![Scenario Stress Test](docs/screenshots/03-scenario-stress-test.png)
+![Scenario Stress Test (continued)](docs/screenshots/03-scenario-stress-test-2.png)
+
+### Alerts and Recommendations
+![Alerts and Recommendations](docs/screenshots/04-alerts-recommendations.png)
+
+---
+
+## Demo Account
+
+To try the app without registering, sign in with the shared demo account:
+
+| Email | Password |
+|---|---|
+| `Ventura404@gmail.com` | `password123` |
+
+The account is created automatically the first time the backend starts. You can also register your own account from the **Create Account** tab.
+
+---
+
+## Demo Flow (60–90 Seconds)
+
+1. Sign in with the demo account and load the **Balanced** sample portfolio
+2. Show net worth, total assets, debts, cash on hand, and investable assets
+3. Explain the financial wellness scores
+4. Click a holding to open its live price chart
+5. Use **Scenario Lab** to run a stress scenario such as a crypto crash
+6. Show how net worth, scores, alerts, and recommendations change
+7. Ask the AI assistant a follow-up question about the results
+8. Switch to another sample portfolio to demonstrate a different risk profile
 
 ---
 
@@ -315,48 +356,6 @@ Supported categories include:
 * Liabilities
 
 This enables the platform to evaluate overall wealth health rather than isolated account balances.
-
----
-
-## Demo Screenshots
-
-### Dashboard Overview
-![Dashboard Overview](docs/screenshots/01-dashboard-overview.png)
-
-### Financial Wellness Scores
-![Financial Wellness Scores](docs/screenshots/02-wellness-scores.png)
-
-### Scenario Stress Test
-![Scenario Stress Test](docs/screenshots/03-scenario-stress-test.png)
-![Scenario Stress Test (continued)](docs/screenshots/03-scenario-stress-test-2.png)
-
-### Alerts and Recommendations
-![Alerts and Recommendations](docs/screenshots/04-alerts-recommendations.png)
-
----
-
-## Demo Account
-
-To try the app without registering, sign in with the shared demo account:
-
-| Email | Password |
-|---|---|
-| `Ventura404@gmail.com` | `password123` |
-
-The account is created automatically the first time the backend starts. You can also register your own account from the **Create Account** tab.
-
----
-
-## Demo Flow (60–90 Seconds)
-
-1. Sign in with the demo account and load the **Balanced** sample portfolio
-2. Show net worth, total assets, debts, cash on hand, and investable assets
-3. Explain the financial wellness scores
-4. Click a holding to open its live price chart
-5. Use **Scenario Lab** to run a stress scenario such as a crypto crash
-6. Show how net worth, scores, alerts, and recommendations change
-7. Ask the AI assistant a follow-up question about the results
-8. Switch to another sample portfolio to demonstrate a different risk profile
 
 ---
 
