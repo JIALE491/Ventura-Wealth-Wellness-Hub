@@ -473,7 +473,9 @@ At the moment the bank and CPF import is simulated, so our next step is to conne
 
 Beyond that, we would like to help users plan for specific goals such as buying a home or retiring, and show them whether they are on track. Families could also view their finances together in one place, and financial advisers could use Ventura to review portfolios with their clients and share simple reports.
 
-On the technical side, we plan to move Ventura to the cloud and use a proper production database. If we had access to better hardware such as a GPU, we could run a stronger LLM for the chatbot ourselves. This would give users more accurate answers and keep their financial data on our own servers instead of sending it to an outside service.
+On the technical side, we plan to set up our own domain, move Ventura to the cloud with a proper production database, and tighten up security so the platform is production ready and anyone can sign up and use it.
+
+Better hardware such as a GPU would also open up a few things for us. We could run a stronger LLM for the chatbot ourselves, which would give more accurate answers and keep financial data on our own servers instead of sending it to an outside service. We could also run thousands of simulated market scenarios at once instead of a handful of fixed shocks, which would make the stress tests and resilience score a lot more realistic. On top of that, we could train models on past market data to forecast how a portfolio might grow over the years, which would tie in well with goal planning.
 
 ---
 
