@@ -1,4 +1,6 @@
-# Ventura — Your Wealth, Engineered for Tomorrow
+<p align="center">
+  <img src="docs/ventura-banner.png" alt="Ventura — Your Wealth, Engineered for Tomorrow" width="100%">
+</p>
 
 **Team:** 404  
 **Hackathon:** FinTech Innovators Hackathon 2026
