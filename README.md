@@ -367,7 +367,7 @@ The account is created automatically the first time the backend starts. You can 
 * Node.js 18+
 * A free [Groq API key](https://console.groq.com/keys) for the AI assistant
 
-> **Tip:** Groq occasionally retires older models. In the event that the AI assistant reports `model_not_found`, simply update the `MODEL` value in `ChatService.java` to any current model from your [Groq console](https://console.groq.com/docs/models).
+> **Tip:** Groq occasionally retires older models. In the event that the AI assistant reports `model_not_found`, simply update the `MODEL` value in `ChatService.java` (currently `llama-3.3-70b-versatile`) to any current model from your [Groq console](https://console.groq.com/docs/models).
 
 ### Backend
 
