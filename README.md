@@ -119,11 +119,13 @@ Stress-test-based score measuring how the portfolio performs under simulated sho
 Worst-case drawdown is 21%.
 
 ### 3) Scenario Stress Testing
-Users can simulate shocks such as:
+In **Scenario Lab**, users can shock any asset class (or the whole portfolio) by −100% to +100%, for example:
 
 - Crypto market crash
 - Equity downturn
-- Interest rate shock
+- Bond sell-off from rising interest rates
+
+The Resilience Score itself is based on built-in stress tests (equities −15%, crypto −30%, bonds −5%, private assets −10%).
 
 The dashboard recalculates:
 
@@ -331,9 +333,21 @@ This enables the platform to evaluate overall wealth health rather than isolated
 
 ---
 
+## Demo Account
+
+To try the app without registering, sign in with the shared demo account:
+
+| Email | Password |
+|---|---|
+| `Ventura404@gmail.com` | `password123` |
+
+The account is created automatically the first time the backend starts. You can also register your own account from the **Create Account** tab.
+
+---
+
 ## Demo Flow (60–90 Seconds)
 
-1. Sign in (or create an account) and load the **Balanced** sample portfolio
+1. Sign in with the demo account and load the **Balanced** sample portfolio
 2. Show net worth, total assets, debts, cash on hand, and investable assets
 3. Explain the financial wellness scores
 4. Click a holding to open its live price chart
@@ -383,29 +397,7 @@ Frontend runs on:
 http://localhost:5173
 ```
 
-Start the backend first, then open the frontend and create an account to get started.
-
----
-
-## Run with Docker
-
-The easiest way to run the full app — only [Docker Desktop](https://www.docker.com/products/docker-desktop/) is required.
-
-```bash
-GROQ_API_KEY=your_groq_api_key docker compose up --build
-```
-
-Then open:
-
-```text
-http://localhost:3000
-```
-
-Accounts and saved portfolios are kept in a Docker volume, so they survive restarts. To stop the app:
-
-```bash
-docker compose down        # add -v to also delete saved data
-```
+Start the backend first, then open the frontend and sign in with the [demo account](#demo-account) or create your own.
 
 ---
 
@@ -443,6 +435,46 @@ Potential next steps include:
 * Household / family-level financial wellness views
 * Adviser collaboration and client reporting features
 * Cloud deployment and a production database
+
+---
+
+## Run with Docker
+
+The easiest way to run the full app — no Java, Maven, or Node.js needed.
+
+### Prerequisite
+Install and open [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+### Step 1: Get the project files
+
+```bash
+git clone https://github.com/JIALE491/Ventura-Wealth-Wellness-Hub.git
+cd Ventura-Wealth-Wellness-Hub
+```
+
+(Or download the ZIP from GitHub and open a terminal in the extracted folder.)
+
+### Step 2: Start the app
+
+```bash
+GROQ_API_KEY=your_groq_api_key docker compose up --build
+```
+
+The first build takes a few minutes. The app works without a Groq key, but the AI assistant will be unavailable.
+
+### Step 3: Open the app
+
+```text
+http://localhost:3000
+```
+
+Sign in with the [demo account](#demo-account) (`Ventura404@gmail.com` / `password123`) or create your own. Accounts and saved portfolios are kept in a Docker volume, so they survive restarts.
+
+### Stop the app
+
+```bash
+docker compose down        # add -v to also delete saved data
+```
 
 ---
 
