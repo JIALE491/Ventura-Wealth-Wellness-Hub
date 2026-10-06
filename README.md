@@ -315,6 +315,7 @@ This enables the platform to evaluate overall wealth health rather than isolated
 
 ### Scenario Stress Test
 ![Scenario Stress Test](docs/screenshots/03-scenario-stress-test.png)
+![Scenario Stress Test (continued)](docs/screenshots/03-scenario-stress-test-2.png)
 
 ### Alerts and Recommendations
 ![Alerts and Recommendations](docs/screenshots/04-alerts-recommendations.png)
