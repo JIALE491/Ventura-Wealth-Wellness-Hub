@@ -79,7 +79,7 @@ We shift the conversation from **“What do I own?”** to **“How financially 
 
 ---
 
-## Key Features (MVP)
+## Key Features
 
 ### 1) Unified Wealth Wallet
 Users can consolidate assets across categories such as:
@@ -427,19 +427,6 @@ Ventura-Wealth-Wellness-Hub/
 
 ---
 
-## Future Improvements
-
-Potential next steps include:
-
-* Real open banking (SGFinDex) and brokerage / wallet API integrations
-* Persisted net worth history and trend tracking over time
-* Goal-based planning and forecasting
-* Household / family-level financial wellness views
-* Adviser collaboration and client reporting features
-* Cloud deployment and a production database
-
----
-
 ## Run with Docker
 
 The easiest way to run the full app — no Java, Maven, or Node.js needed.
@@ -477,6 +464,19 @@ Sign in with the [demo account](#demo-account) (`Ventura404@gmail.com` / `passwo
 ```bash
 docker compose down        # add -v to also delete saved data
 ```
+
+---
+
+## Future Outlook
+
+Potential next steps include:
+
+* Real open banking (SGFinDex) and brokerage / wallet API integrations
+* Persisted net worth history and trend tracking over time
+* Goal-based planning and forecasting
+* Household / family-level financial wellness views
+* Adviser collaboration and client reporting features
+* Cloud deployment and a production database
 
 ---
 
