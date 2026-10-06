@@ -460,7 +460,7 @@ cd Ventura-Wealth-Wellness-Hub
 GROQ_API_KEY=your_groq_api_key docker compose up --build
 ```
 
-The first build takes a few minutes. The app works without a Groq key, but the AI assistant will be unavailable.
+Replace `your_groq_api_key` with your [Groq API key](https://console.groq.com/keys) to power the AI assistant. The first build takes a few minutes.
 
 ### Step 3: Open the app
 
