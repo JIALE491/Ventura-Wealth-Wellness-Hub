@@ -1,9 +1,9 @@
-# Wealth Wellness Hub
+# Ventura-Wealth Wellness Hub
 
 **Team:** 404  
 **Hackathon:** FinTech Innovators Hackathon 2026
 
-Wealth Wellness Hub is a unified financial wellness platform that consolidates fragmented wealth data into a single **Wealth Wallet** and turns it into actionable financial intelligence.
+Ventura-Wealth Wellness Hub (Ventura) is a unified financial wellness platform that consolidates fragmented wealth data into a single **Wealth Wallet** and turns it into actionable financial intelligence.
 
 Instead of acting as just another portfolio tracker, the platform helps users understand whether their overall wealth position is actually healthy by analyzing **diversification, liquidity, and resilience** across traditional, private, and digital assets.
 
@@ -13,11 +13,11 @@ Instead of acting as just another portfolio tracker, the platform helps users un
 
 ## Project Description 
 
-Wealth Wellness Hub is an integrated platform that helps investors and advisers view their full financial position in one place. It unifies fragmented assets across cash, equities, bonds, crypto, private holdings, property, CPF, and liabilities into a single Wealth Wallet dashboard.
+Ventura is an integrated platform that helps investors and advisers view their full financial position in one place. It unifies fragmented assets across cash, equities, bonds, crypto, private holdings, property, CPF, and liabilities into a single Wealth Wallet dashboard.
 
 Our prototype goes beyond balance tracking by translating portfolio data into financial wellness analytics. It evaluates diversification, liquidity, and resilience under market stress, then generates prioritised recommendations to improve financial health. Users can upload a CSV portfolio, add assets manually, refresh selected live prices, and simulate shocks such as a crypto crash or equity downturn to instantly see how their net worth and scores change.
 
-This solves the problem statement by giving users a secure and intuitive way to understand total wealth composition, identify risks, and take proactive action. Rather than asking only “What do I own?”, Wealth Wellness Hub helps users answer “How financially prepared am I?” — making the platform more useful for long-term planning, advisory conversations, and real-world financial decision-making.
+This solves the problem statement by giving users a secure and intuitive way to understand total wealth composition, identify risks, and take proactive action. Rather than asking only “What do I own?”, Ventura helps users answer “How financially prepared am I?” — making the platform more useful for long-term planning, advisory conversations, and real-world financial decision-making.
 
 ---
 
@@ -38,13 +38,13 @@ Because these assets exist across multiple platforms, users often lack a clear a
 - Portfolio resilience
 - Overall wealth readiness
 
-Wealth Wellness Hub addresses this by providing a single, integrated view of wealth and translating it into actionable financial wellness insights.
+Ventura addresses this by providing a single, integrated view of wealth and translating it into actionable financial wellness insights.
 
 ---
 
 ## Our Solution
 
-Wealth Wellness Hub consolidates a user’s assets into a single **Wealth Wallet** and transforms raw holdings into a clear, intuitive financial wellness dashboard.
+Ventura consolidates a user’s assets into a single **Wealth Wallet** and transforms raw holdings into a clear, intuitive financial wellness dashboard.
 
 The platform allows users to:
 
@@ -58,9 +58,9 @@ This shifts wealth management from **passive tracking** to **proactive financial
 
 ---
 
-## Why Wealth Wellness Hub Is Different
+## Why Ventura Is Different
 
-Most platforms focus on tracking balances or performance within one ecosystem only. Wealth Wellness Hub is different because it combines **asset aggregation** with **financial wellness intelligence**.
+Most platforms focus on tracking balances or performance within one ecosystem only. Ventura is different because it combines **asset aggregation** with **financial wellness intelligence**.
 
 ### 1. Beyond Portfolio Tracking
 We do not stop at displaying balances and charts. We assess whether a portfolio is actually healthy by measuring diversification, liquidity, and resilience.
@@ -182,7 +182,7 @@ The dashboard is designed to make financial health easier to understand through:
 
 ## Market Potential
 
-Wealth Wellness Hub addresses a growing need for **holistic financial visibility** in an increasingly fragmented financial landscape.
+Ventura addresses a growing need for **holistic financial visibility** in an increasingly fragmented financial landscape.
 
 As more investors hold assets across bank accounts, brokerages, digital wallets, CPF, property, and alternative investments, the demand for unified and actionable wealth monitoring tools will continue to rise.
 
@@ -195,7 +195,7 @@ The platform can serve multiple segments:
 - Institutions building next-generation wealth dashboards
 
 ### Commercial Potential
-A production version of Wealth Wellness Hub could support:
+A production version of Ventura could support:
 
 - B2C subscription plans for advanced analytics
 - B2B2C white-label solutions for banks and wealth platforms
@@ -237,7 +237,7 @@ A production version can scale through:
 
 ## Business Model
 
-A realistic commercialization pathway for Wealth Wellness Hub includes:
+A realistic commercialization pathway for Ventura includes:
 
 ### Option 1: Consumer Subscription
 Freemium dashboard with paid tiers for:
@@ -288,7 +288,7 @@ Portfolio Data (CSV / Manual / Sample)
 
 ## Data Unification
 
-Wealth Wellness Hub standardizes multiple asset types into a single internal structure so they can be analyzed consistently.
+Ventura standardizes multiple asset types into a single internal structure so they can be analyzed consistently.
 
 Supported categories include:
 
@@ -415,7 +415,7 @@ docker compose down
 ## Repository Structure
 
 ```text
-wealth-wellness-hub/
+Ventura-Wealth-Wellness-Hub/
 ├── backend/                  # Spring Boot backend and analytics services
 │   ├── src/
 │   ├── .dockerignore
