@@ -1,9 +1,9 @@
-# Ventura-Wealth Wellness Hub
+# Ventura — Your Wealth, Engineered for Tomorrow
 
 **Team:** 404  
 **Hackathon:** FinTech Innovators Hackathon 2026
 
-Ventura-Wealth Wellness Hub (Ventura) is a unified financial wellness platform that consolidates fragmented wealth data into a single **Wealth Wallet** and turns it into actionable financial intelligence.
+Ventura is a unified financial wellness platform that consolidates fragmented wealth data into a single **Wealth Wallet** and turns it into actionable financial intelligence.
 
 Instead of acting as just another portfolio tracker, the platform helps users understand whether their overall wealth position is actually healthy by analyzing **diversification, liquidity, and resilience** across traditional, private, and digital assets.
 
