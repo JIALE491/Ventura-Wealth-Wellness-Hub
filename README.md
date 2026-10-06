@@ -291,7 +291,7 @@ Portfolio Data (CSV / Manual / Sample / Simulated bank & CPF import)
 * **AI Assistant:** Groq API (Llama 3.3 70B)
 * **Visualization:** Recharts, TradingView chart & news widgets
 * **Market Data:** Binance (crypto), Yahoo Finance (equities / ETFs), ExchangeRate-API (FX)
-* **Infrastructure (Demo):** Runs locally
+* **Infrastructure (Demo):** Docker Compose (nginx + Spring Boot), or run locally
 
 ---
 
@@ -387,19 +387,45 @@ Start the backend first, then open the frontend and create an account to get sta
 
 ---
 
+## Run with Docker
+
+The easiest way to run the full app — only [Docker Desktop](https://www.docker.com/products/docker-desktop/) is required.
+
+```bash
+GROQ_API_KEY=your_groq_api_key docker compose up --build
+```
+
+Then open:
+
+```text
+http://localhost:3000
+```
+
+Accounts and saved portfolios are kept in a Docker volume, so they survive restarts. To stop the app:
+
+```bash
+docker compose down        # add -v to also delete saved data
+```
+
+---
+
 ## Repository Structure
 
 ```text
 Ventura-Wealth-Wellness-Hub/
 ├── backend/                  # Spring Boot API, analytics services, auth, AI assistant
 │   ├── src/
+│   ├── Dockerfile
 │   └── pom.xml
 ├── frontend/                 # React dashboard (Vite)
 │   ├── src/
+│   ├── Dockerfile
+│   ├── nginx.conf            # Serves the app and proxies /api to the backend
 │   ├── package.json
 │   └── vite.config.js
 ├── docs/
 │   └── screenshots/          # README and pitch demo screenshots
+├── docker-compose.yml        # Full-stack Docker setup
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -416,7 +442,7 @@ Potential next steps include:
 * Goal-based planning and forecasting
 * Household / family-level financial wellness views
 * Adviser collaboration and client reporting features
-* Containerised deployment (Docker) and a production database
+* Cloud deployment and a production database
 
 ---
 

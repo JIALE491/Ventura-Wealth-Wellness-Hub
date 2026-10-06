@@ -2,13 +2,21 @@ services:
   backend:
     build:
       context: ./backend
-    container_name: wealth-wellness-backend
+    container_name: ventura-backend
+    environment:
+      # Needed for the AI assistant. Set it in your shell or a .env file next to this one.
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+    volumes:
+      - ventura-data:/data
 
   frontend:
     build:
       context: ./frontend
-    container_name: wealth-wellness-frontend
+    container_name: ventura-frontend
     depends_on:
       - backend
     ports:
       - "3000:80"
+
+volumes:
+  ventura-data:
