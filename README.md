@@ -15,7 +15,7 @@ Instead of acting as just another portfolio tracker, the platform helps users un
 
 Ventura is an integrated platform that helps investors and advisers view their full financial position in one place. It unifies fragmented assets across cash, equities, bonds, crypto, private holdings, property, CPF, and liabilities into a single Wealth Wallet dashboard.
 
-Our prototype goes beyond balance tracking by translating portfolio data into financial wellness analytics. It evaluates diversification, liquidity, and resilience under market stress, then generates prioritised recommendations to improve financial health. Users can upload a CSV portfolio, add assets manually, refresh selected live prices, and simulate shocks such as a crypto crash or equity downturn to instantly see how their net worth and scores change.
+Our prototype goes beyond balance tracking by translating portfolio data into financial wellness analytics. It evaluates diversification, liquidity, and resilience under market stress, then generates prioritised recommendations to improve financial health. Users can sign in to save their portfolios, upload a CSV, add assets manually, refresh selected live prices, and simulate shocks such as a crypto crash or equity downturn to instantly see how their net worth and scores change — with an AI assistant on hand to explain the results in plain language.
 
 This solves the problem statement by giving users a secure and intuitive way to understand total wealth composition, identify risks, and take proactive action. Rather than asking only “What do I own?”, Ventura helps users answer “How financially prepared am I?” — making the platform more useful for long-term planning, advisory conversations, and real-world financial decision-making.
 
@@ -93,10 +93,12 @@ Users can consolidate assets across categories such as:
 - CPF
 - Liabilities
 
-Portfolio data can be added through CSV upload, manual entry, or sample datasets.
+Portfolio data can be added through CSV upload, manual entry, sample datasets, or a simulated SGFinDex bank / CPF import ("Connect Accounts"). Holdings in foreign currencies (USD, EUR, GBP, JPY and more) are converted to SGD using live FX rates.
+
+Users have personal accounts, so named portfolios can be saved and reloaded across sessions.
 
 ### 2) Financial Wellness Analytics
-The platform calculates clear, explainable metrics on a 0–100 scale.
+The platform calculates clear, explainable metrics on a 0–100 scale. The three core scores are described below; the dashboard also tracks **Debt Health**, **Concentration** (single-holding risk), and **Emergency Fund** adequacy.
 
 #### Diversification Score
 Measures concentration risk across asset classes.
@@ -133,7 +135,7 @@ The dashboard recalculates:
 This helps users understand portfolio resilience before real crises happen.
 
 ### 4) Actionable Recommendations
-The system generates prioritised next steps based on score outputs.
+The system generates prioritised next steps based on score outputs, tailored to the user's profile (age, risk appetite, and primary goal).
 
 Examples include:
 
@@ -142,6 +144,8 @@ Examples include:
 - Rebalance towards more diversified asset classes
 - Review debt burden and improve emergency reserves
 
+For follow-up questions, a built-in AI assistant answers using the user's actual holdings, scores, and scenario results — e.g. *"Why is my resilience score low?"*
+
 ### 5) Intuitive Interactive Dashboard
 The dashboard is designed to make financial health easier to understand through:
 
@@ -149,18 +153,19 @@ The dashboard is designed to make financial health easier to understand through:
 - Visual score indicators
 - Alerts and insights
 - Scenario comparison views
-- Simple portfolio management actions
+- Interactive price charts for individual holdings (powered by TradingView), plus a live market news feed
+- Simple portfolio management actions, including CSV and PDF export
 
 ---
 
 ## Example User Journey
 
-1. User uploads a portfolio CSV or loads a sample portfolio  
+1. User signs in, then uploads a portfolio CSV or loads a sample portfolio  
 2. The platform consolidates all holdings into a single Wealth Wallet  
-3. The dashboard computes diversification, liquidity, and resilience scores  
+3. The dashboard computes diversification, liquidity, resilience, and supporting scores  
 4. The user runs a scenario such as a crypto crash or equity selloff  
 5. The dashboard updates net worth, risk drivers, and recommendations  
-6. The user takes action to improve financial wellness
+6. The user asks the AI assistant follow-up questions, then saves the portfolio and takes action
 
 ---
 
@@ -219,17 +224,17 @@ The current prototype is practical and demo-ready because it:
 ### Security Model (Demo)
 For the hackathon prototype:
 
-- CSV files are processed locally / in memory for demo use
-- No persistent storage of sensitive user financial data is required
-- No banking credentials are needed
-- No personal identity data is necessary to use the demo
+- Accounts use email + password; passwords are hashed with BCrypt and sessions use signed JWT tokens
+- Only portfolios the user explicitly saves are stored (embedded H2 database); everything else stays in the browser session
+- CSV files are parsed in memory and not stored
+- No banking credentials are needed — the bank / CPF import is simulated
 
 ### Scalability Path
 A production version can scale through:
 
 - Open banking integrations
 - Brokerage / wallet API integrations
-- Secure user authentication
+- Production database (e.g. PostgreSQL) and hardened authentication
 - Cloud-hosted analytics services
 - Adviser-facing dashboards and enterprise deployment
 
@@ -260,29 +265,33 @@ Financial advisers and wealth teams could use the platform as a client-facing ad
 ```text
 User
   ↓
-Frontend Dashboard (React)
+Frontend Dashboard (React)  ── TradingView charts & news widgets
   ↓
-Backend API (Spring Boot)
+Backend API (Spring Boot, JWT auth)
+  ├── Analytics Engine
+  │     ├── Portfolio Aggregation
+  │     ├── Financial Wellness Scoring
+  │     ├── Scenario Simulation Engine
+  │     └── Recommendation Engine
+  ├── AI Assistant ──────── Groq (Llama 3.3 70B)
+  ├── Live Prices & FX ──── Binance · Yahoo Finance · ExchangeRate-API
+  └── Saved Portfolios ──── H2 database
   ↓
-Analytics Engine
-  ├── Portfolio Aggregation
-  ├── Financial Wellness Scoring
-  ├── Scenario Simulation Engine
-  └── Recommendation Engine
-  ↓
-Portfolio Data (CSV / Manual / Sample)
-````
+Portfolio Data (CSV / Manual / Sample / Simulated bank & CPF import)
+```
 
 ---
 
 ## Technology Stack
 
 * **Frontend:** React + JavaScript (Vite)
-* **Backend:** Spring Boot (Java 17)
+* **Backend:** Spring Boot (Java 17), Spring Security + JWT
+* **Database:** H2 (embedded) via Spring Data JPA
 * **Data Processing:** Custom portfolio analytics engine
-* **Visualization:** Recharts + charting components
-* **Market Data:** Selected live price refresh for supported assets
-* **Infrastructure (Demo):** Local / demo-safe processing
+* **AI Assistant:** Groq API (Llama 3.3 70B)
+* **Visualization:** Recharts, TradingView chart & news widgets
+* **Market Data:** Binance (crypto), Yahoo Finance (equities / ETFs), ExchangeRate-API (FX)
+* **Infrastructure (Demo):** Runs locally
 
 ---
 
@@ -324,13 +333,14 @@ This enables the platform to evaluate overall wealth health rather than isolated
 
 ## Demo Flow (60–90 Seconds)
 
-1. Load a sample portfolio
-2. Show the total net worth and wealth breakdown
-3. Explain the three financial wellness scores
-4. Run a stress scenario such as a crypto crash
-5. Show how net worth and scores change
-6. Highlight recommendations generated by the platform
-7. Switch to another portfolio example to demonstrate a different risk profile
+1. Sign in (or create an account) and load the **Balanced** sample portfolio
+2. Show net worth, total assets, debts, cash on hand, and investable assets
+3. Explain the financial wellness scores
+4. Click a holding to open its live price chart
+5. Use **Scenario Lab** to run a stress scenario such as a crypto crash
+6. Show how net worth, scores, alerts, and recommendations change
+7. Ask the AI assistant a follow-up question about the results
+8. Switch to another sample portfolio to demonstrate a different risk profile
 
 ---
 
@@ -341,11 +351,13 @@ This enables the platform to evaluate overall wealth health rather than isolated
 * Java 17+
 * Maven
 * Node.js 18+
+* A free [Groq API key](https://console.groq.com/keys) for the AI assistant
 
 ### Backend
 
 ```bash
 cd backend
+export GROQ_API_KEY=your_groq_api_key
 mvn spring-boot:run
 ```
 
@@ -356,6 +368,8 @@ http://localhost:8080
 ```
 
 ### Frontend
+
+In a second terminal:
 
 ```bash
 cd frontend
@@ -369,47 +383,7 @@ Frontend runs on:
 http://localhost:5173
 ```
 
-## Run with Docker
-
-### Prerequisite
-Please install Docker Desktop before running the project.
-
-### Step 1: Get the project files
-Either clone the repository or download it as a ZIP from GitHub and extract it.
-
-### Step 2: Start the app
-Open a terminal in the project root and run:
-
-```bash
-docker compose up --build
-```
-
-
-Then open:
-
-```text
-http://127.0.0.1:3000
-```
-
-### Demo flow
-
-1. Load the Balanced sample portfolio
-
-2. Review net worth, assets, debts, cash on hand, and investable assets
-
-3. Explore the asset allocation chart and portfolio holdings
-
-4. Use Scenario Lab to simulate a market shock
-
-5. Observe updated financial wellness scores, alerts, and recommendations
-
-6. Click Refresh Prices to fetch supported live prices
-
-### Stop the app
-
-```
-docker compose down
-```
+Start the backend first, then open the frontend and create an account to get started.
 
 ---
 
@@ -417,21 +391,15 @@ docker compose down
 
 ```text
 Ventura-Wealth-Wellness-Hub/
-├── backend/                  # Spring Boot backend and analytics services
+├── backend/                  # Spring Boot API, analytics services, auth, AI assistant
 │   ├── src/
-│   ├── .dockerignore
-│   ├── Dockerfile
 │   └── pom.xml
-├── frontend/                 # React frontend dashboard
+├── frontend/                 # React dashboard (Vite)
 │   ├── src/
-│   ├── .dockerignore
-│   ├── Dockerfile
-│   ├── nginx.conf
 │   ├── package.json
 │   └── vite.config.js
 ├── docs/
 │   └── screenshots/          # README and pitch demo screenshots
-├── docker-compose.yml        # Full-stack Docker setup
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -443,13 +411,12 @@ Ventura-Wealth-Wellness-Hub/
 
 Potential next steps include:
 
-* Open banking API integration
-* Wallet and brokerage integrations
-* Historical trend tracking over time
-* AI-assisted financial coaching
+* Real open banking (SGFinDex) and brokerage / wallet API integrations
+* Persisted net worth history and trend tracking over time
 * Goal-based planning and forecasting
 * Household / family-level financial wellness views
 * Adviser collaboration and client reporting features
+* Containerised deployment (Docker) and a production database
 
 ---
 
@@ -458,9 +425,3 @@ Potential next steps include:
 This repository is provided for educational and hackathon demonstration purposes.
 
 MIT License.
-
-
-
-
-
-
