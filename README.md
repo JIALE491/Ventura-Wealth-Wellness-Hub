@@ -478,6 +478,25 @@ docker compose down        # add -v to also delete saved data
 
 ---
 
+## Troubleshooting
+
+### AI assistant replies with `model_not_found` (404)
+Your API key is fine. A bad key returns `401 Invalid API Key` instead. The assistant's model name, `llama-3.3-70b-versatile`, is hardcoded in [`ChatService.java`](backend/src/main/java/com/wealthwellness/service/ChatService.java), and Groq regularly retires older models, so the model may no longer be available.
+
+To fix it, list the models your key can access:
+
+```bash
+curl -s https://api.groq.com/openai/v1/models -H "Authorization: Bearer $GROQ_API_KEY" \
+  | python3 -c "import json,sys;[print(m['id']) for m in json.load(sys.stdin)['data']]"
+```
+
+Then replace the `MODEL` value in `ChatService.java` with a current chat model from that list and restart the backend. With Docker, add `--build` so the change is picked up.
+
+### AI assistant replies with `401 Invalid API Key`
+`GROQ_API_KEY` isn't set in the terminal that started the backend. Run `export GROQ_API_KEY=your_groq_api_key` (or pass it to `docker compose` as shown above) and restart.
+
+---
+
 ## License
 
 This repository is provided for educational and hackathon demonstration purposes.
