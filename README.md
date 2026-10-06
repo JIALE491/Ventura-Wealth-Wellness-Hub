@@ -469,14 +469,11 @@ docker compose down        # add -v to also delete saved data
 
 ## Future Outlook
 
-Potential next steps include:
+At the moment the bank and CPF import is simulated, so our next step is to connect Ventura to SGFinDex as well as real brokerage and crypto wallet accounts. That way users would not need to type in their holdings by hand. We also want to keep a record of net worth over time, so users can look back and see how their finances have changed from month to month.
 
-* Real open banking (SGFinDex) and brokerage / wallet API integrations
-* Persisted net worth history and trend tracking over time
-* Goal-based planning and forecasting
-* Household / family-level financial wellness views
-* Adviser collaboration and client reporting features
-* Cloud deployment and a production database
+Beyond that, we would like to help users plan for specific goals such as buying a home or retiring, and show them whether they are on track. Families could also view their finances together in one place, and financial advisers could use Ventura to review portfolios with their clients and share simple reports.
+
+On the technical side, we plan to move Ventura to the cloud and use a proper production database. If we had access to better hardware such as a GPU, we could run a stronger LLM for the chatbot ourselves. This would give users more accurate answers and keep their financial data on our own servers instead of sending it to an outside service.
 
 ---
 
